@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MyCustomView">
+        <attr name="color_hand_hour" format="color"/>
+        <attr name="color_hand_minutes" format="color"/>
+        <attr name="color_hand_seconds" format="color"/>
+        <attr name="color_circle" format="color"/>
+        <attr name="size_hand_hour" format="dimension"/>
+        <attr name="size_hand_minutes" format="dimension"/>
+        <attr name="size_hand_seconds" format="dimension"/>
+    </declare-styleable>
+</resources>
