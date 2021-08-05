@@ -8,6 +8,7 @@
 
 
     <com.example.customview_anderson_4_exercize.MyCustomView
+        android:id="@+id/clock"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:color_hand_seconds="@color/primaryColor" />

@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
+import android.view.animation.RotateAnimation
 import android.widget.Toast
 import java.util.*
 import kotlin.math.cos
@@ -82,7 +84,7 @@ class MyCustomView @JvmOverloads constructor(
         drawHands(canvas);
         drawNumerals(canvas);
         drawPointInCenter(canvas)
-        invalidate()
+        postInvalidate()
     }
 
     private fun drawPointInCenter(canvas: Canvas) {
@@ -137,17 +139,19 @@ class MyCustomView @JvmOverloads constructor(
         mSecond = calendar.get(Calendar.SECOND).toFloat()
 
         drawHourHand(canvas, (mHour + mMinute / 60.0) * 5f)
-        drawMinuteHand(canvas, mMinute)
+        drawMinuteHand(canvas, mMinute, mSecond)
         drawSecondsHand(canvas, mSecond)
     }
 
 
-    private fun drawMinuteHand(canvas: Canvas, location: Float) {
+    private fun drawMinuteHand(canvas: Canvas, minutes: Float, seconds: Float) {
         mPaint!!.reset()
 
         setPaintAttributes(mColorHandMinutes, Paint.Style.STROKE, mSizeHandMinutes, true)
 
-        mAngle = Math.PI * location / 30 - Math.PI / 2
+        val minSecond = (((minutes * 60) + seconds) / 60)
+
+        mAngle = (Math.PI * minSecond / 30 - Math.PI / 2)
 
         canvas.drawLine(
             mCentreX.toFloat(),
